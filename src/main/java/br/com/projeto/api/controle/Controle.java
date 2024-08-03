@@ -40,6 +40,11 @@ public class Controle {
         return acao.save(obj);
     }
 
+    @GetMapping("/api/contador")
+    public long contador(){
+        return acao.count();
+    }
+
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo){
         Pessoa obj = selecionarPeloCodigo(codigo);
