@@ -45,6 +45,11 @@ public class Controle {
         return acao.count();
     }
 
+    @GetMapping("/api/ordenarNomes")
+    public List<Pessoa> ordenarNomes(){
+        return acao.findByOrderByNome();
+    }
+
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo){
         Pessoa obj = selecionarPeloCodigo(codigo);
