@@ -55,6 +55,11 @@ public class Controle {
         return acao.findByNomeOrderByIdadeDesc("Thales");
     }
 
+    @GetMapping("/api/nomeContem")
+    public List<Pessoa> nomeContem(){
+        return acao.findByNomeContaining("m");
+    }
+
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo){
         Pessoa obj = selecionarPeloCodigo(codigo);
