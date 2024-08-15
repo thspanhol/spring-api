@@ -60,6 +60,16 @@ public class Controle {
         return acao.findByNomeContaining("m");
     }
 
+    @GetMapping("/api/terminaCom")
+    public List<Pessoa> terminaCom(){
+        return acao.findByNomeEndsWith("a");
+    }
+
+    @GetMapping("/api/iniciaCom")
+    public List<Pessoa> iniciaCom(){
+        return acao.findByNomeStartsWith("t");
+    }
+
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo){
         Pessoa obj = selecionarPeloCodigo(codigo);
