@@ -70,6 +70,11 @@ public class Controle {
         return acao.findByNomeStartsWith("t");
     }
 
+    @GetMapping("/api/somaIdades")
+    public int somaIdades(){
+        return acao.somaIdades();
+    }
+
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo){
         Pessoa obj = selecionarPeloCodigo(codigo);
