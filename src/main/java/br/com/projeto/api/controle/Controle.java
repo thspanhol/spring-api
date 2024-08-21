@@ -18,17 +18,17 @@ import br.com.projeto.api.repositorio.Repositorio;
 
 @RestController
 public class Controle {
-    
+
     @Autowired
     private Repositorio acao;
 
     @PostMapping("/api")
-    public Pessoa cadastrar(@RequestBody Pessoa obj){
+    public Pessoa cadastrar(@RequestBody Pessoa obj) {
         return acao.save(obj);
     }
 
     @GetMapping("/api")
-    public List<Pessoa> selecionar(){
+    public List<Pessoa> selecionar() {
         return acao.findAll();
     }
 
@@ -38,78 +38,78 @@ public class Controle {
     }
 
     @PutMapping("/api")
-    public Pessoa editar(@RequestBody Pessoa obj){
+    public Pessoa editar(@RequestBody Pessoa obj) {
         return acao.save(obj);
     }
 
     @GetMapping("/api/contador")
-    public long contador(){
+    public long contador() {
         return acao.count();
     }
 
     @GetMapping("/api/ordenarNomes")
-    public List<Pessoa> ordenarNomes(){
+    public List<Pessoa> ordenarNomes() {
         return acao.findByOrderByNome();
     }
 
     @GetMapping("/api/ordenarNomes2")
-    public List<Pessoa> ordenarNomes2(){
+    public List<Pessoa> ordenarNomes2() {
         return acao.findByNomeOrderByIdadeDesc("Thales");
     }
 
     @GetMapping("/api/nomeContem")
-    public List<Pessoa> nomeContem(){
+    public List<Pessoa> nomeContem() {
         return acao.findByNomeContaining("m");
     }
 
     @GetMapping("/api/terminaCom")
-    public List<Pessoa> terminaCom(){
+    public List<Pessoa> terminaCom() {
         return acao.findByNomeEndsWith("a");
     }
 
     @GetMapping("/api/iniciaCom")
-    public List<Pessoa> iniciaCom(){
+    public List<Pessoa> iniciaCom() {
         return acao.findByNomeStartsWith("t");
     }
 
     @GetMapping("/api/somaIdades")
-    public int somaIdades(){
+    public int somaIdades() {
         return acao.somaIdades();
     }
 
     @GetMapping("/api/idadeMaiorIgual")
-    public List<Pessoa> idadeMaiorIgual(){
+    public List<Pessoa> idadeMaiorIgual() {
         return acao.idadeMaiorIgual(27);
     }
 
     @DeleteMapping("/api/{codigo}")
-    public void remover(@PathVariable int codigo){
+    public void remover(@PathVariable int codigo) {
         Pessoa obj = selecionarPeloCodigo(codigo);
         acao.delete(obj);
     }
 
     @GetMapping("")
-    public String mensagem(){
+    public String mensagem() {
         return "Hello World!";
     }
 
     @GetMapping("/boasVindas")
-    public String boasVindas(){
+    public String boasVindas() {
         return "Seja vem vindo(a)";
     }
 
     @GetMapping("/boasVindas/{nome}")
-    public String boasVindas(@PathVariable String nome){
+    public String boasVindas(@PathVariable String nome) {
         return "Seja vem vindo(a) " + nome + "!";
     }
 
     @PostMapping("/pessoa")
-    public Pessoa pessoa(@RequestBody Pessoa p){
+    public Pessoa pessoa(@RequestBody Pessoa p) {
         return p;
     }
 
     @GetMapping("/status")
-    public ResponseEntity<?> status(){
+    public ResponseEntity<?> status() {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
