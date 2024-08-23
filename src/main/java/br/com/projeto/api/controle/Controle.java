@@ -32,8 +32,8 @@ public class Controle {
     }
 
     @GetMapping("/api")
-    public List<Pessoa> selecionar() {
-        return acao.findAll();
+    public ResponseEntity<?> selecionar() {
+        return servico.selecionar();
     }
 
     @GetMapping("/api/{codigo}")
