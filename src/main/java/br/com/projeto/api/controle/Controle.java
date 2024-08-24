@@ -37,8 +37,8 @@ public class Controle {
     }
 
     @GetMapping("/api/{codigo}")
-    public Pessoa selecionarPeloCodigo(@PathVariable int codigo) {
-        return acao.findByCodigo(codigo);
+    public ResponseEntity<?> selecionarPeloCodigo(@PathVariable int codigo) {
+        return servico.selecionarPeloCodigo(codigo);
     }
 
     @PutMapping("/api")
@@ -88,8 +88,8 @@ public class Controle {
 
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo) {
-        Pessoa obj = selecionarPeloCodigo(codigo);
-        acao.delete(obj);
+        //Pessoa obj = selecionarPeloCodigo(codigo);
+        //acao.delete(obj);
     }
 
     @GetMapping("")
