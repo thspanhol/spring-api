@@ -19,46 +19,46 @@ public class Servico {
     private Repositorio acao;
 
     // Método para cadastrar pessoas
-    public ResponseEntity<?> cadastrar(Pessoa obj){
+    public ResponseEntity<?> cadastrar(Pessoa obj) {
 
         if (obj.getNome().equals("")) {
             mensagem.setMensagem("O nome precisa ser informado.");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else if (obj.getIdade() < 0){
+        } else if (obj.getIdade() < 0) {
             mensagem.setMensagem("Informe uma idade válida.");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        }else {
+        } else {
             return new ResponseEntity<>(acao.save(obj), HttpStatus.CREATED);
         }
     }
 
     // Método para selecionar pessoas
-    public ResponseEntity<?> selecionar(){
+    public ResponseEntity<?> selecionar() {
         return new ResponseEntity<>(acao.findAll(), HttpStatus.OK);
     }
 
     // Método para selecionar pessoas pelo código
-    public ResponseEntity<?> selecionarPeloCodigo(int codigo){
+    public ResponseEntity<?> selecionarPeloCodigo(int codigo) {
 
         if (acao.countByCodigo(codigo) == 0) {
             mensagem.setMensagem("Pessoa não encontrada.");
-            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);    
+            return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else {
             return new ResponseEntity<>(acao.findByCodigo(codigo), HttpStatus.OK);
         }
-        
+
     }
 
     // Método para editar dados
-    public ResponseEntity<?> editar(Pessoa obj){
+    public ResponseEntity<?> editar(Pessoa obj) {
 
-        if(acao.countByCodigo(obj.getCodigo()) == 0){
+        if (acao.countByCodigo(obj.getCodigo()) == 0) {
             mensagem.setMensagem("O código informado não existe.");
             return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
-        } else if (obj.getNome().equals("")){
+        } else if (obj.getNome().equals("")) {
             mensagem.setMensagem("É necessário informar um nome.");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
-        } else if (obj.getIdade() < 0){
+        } else if (obj.getIdade() < 0) {
             mensagem.setMensagem("Informe uma idade válida.");
             return new ResponseEntity<>(mensagem, HttpStatus.BAD_REQUEST);
         } else {
@@ -68,9 +68,9 @@ public class Servico {
 
     // Método para remover registros
 
-    public ResponseEntity<?> remover (int codigo){
-        
-        if(acao.countByCodigo(codigo) == 0){
+    public ResponseEntity<?> remover(int codigo) {
+
+        if (acao.countByCodigo(codigo) == 0) {
             mensagem.setMensagem("O código não existe.");
             return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
         } else {
@@ -82,5 +82,4 @@ public class Servico {
         }
     }
 
-    
 }
