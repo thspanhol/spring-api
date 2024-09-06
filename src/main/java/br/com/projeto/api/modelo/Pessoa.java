@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "pessoas")
 public class Pessoa {
-    
+
     // Atributo
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,20 +21,25 @@ public class Pessoa {
     public String getNome() {
         return nome;
     }
+
     public int getIdade() {
         return idade;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public void setIdade(int idade) {
         this.idade = idade;
     }
+
     public int getCodigo() {
         return codigo;
     }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
 }
