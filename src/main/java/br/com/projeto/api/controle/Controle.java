@@ -119,7 +119,7 @@ public class Controle {
     }
 
     @PostMapping("/cliente")
-    public void cliente(@Valid @RequestBody Cliente obj){
+    public void cliente(@Valid @RequestBody Cliente obj) {
 
     }
 
